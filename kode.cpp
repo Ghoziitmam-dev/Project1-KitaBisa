@@ -81,14 +81,16 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(BTN_RESET), ISR_Reset, FALLING);
 
   // Inisialisasi LCD I2C
-  lcd.init();
-  lcd.backlight();
-  lcd.clear();
-  lcd.setCursor(0, 0); lcd.print("PEMADAM API");
-  lcd.setCursor(0, 1); lcd.print("OTOMATIS v2.0");
+  lcd.init(); // Menginisialisasi LCD agar siap digunakan (memulai komunikasi dengan modul LCD)
+  lcd.backlight(); // Menyalakan lampu backlight pada LCD supaya layar terlihat terang
+  lcd.clear(); // Menghapus semua tampilan sebelumnya di LCD (layar jadi kosong)
+  lcd.setCursor(0, 0); // Mengatur posisi kursor ke kolom 0, baris 0 (pojok kiri atas)
+  lcd.print("PEMADAM API");  // Menampilkan teks "PEMADAM API" di posisi kursor saat ini
+  lcd.setCursor(0, 1); // Memindahkan kursor ke kolom 0, baris 1 (baris kedua)
+  lcd.print("OTOMATIS v2.0"); // Menampilkan teks "OTOMATIS v2.0" di baris kedua LCD
 
-  matikanSistem();
-  delay(2000);
+  matikanSistem(); // Memanggil fungsi untuk mematikan sistem (misalnya mematikan relay, pompa, buzzer, dll)
+  delay(2000); // Memberi jeda selama 2000 milidetik (2 detik) sebelum program lanjut
 }
 
 // LOOP — Perulangan utama sistem
